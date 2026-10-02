@@ -1,0 +1,1 @@
+global.floor_height = 240
