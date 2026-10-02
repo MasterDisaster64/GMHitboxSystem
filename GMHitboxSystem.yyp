@@ -1,0 +1,41 @@
+{
+  "$GMProject":"v1",
+  "%Name":"GMHitboxSystem",
+  "AudioGroups":[
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+  ],
+  "configs":{
+    "children":[],
+    "name":"Default",
+  },
+  "defaultScriptType":0,
+  "Folders":[
+    {"$GMFolder":"","%Name":"Hitbox System","folderPath":"folders/Hitbox System.yy","name":"Hitbox System","resourceType":"GMFolder","resourceVersion":"2.0",},
+  ],
+  "ForcedPrefabProjectReferences":[],
+  "IncludedFiles":[],
+  "isEcma":false,
+  "LibraryEmitters":[],
+  "MetaData":{
+    "IDEVersion":"2026.0.0.16",
+  },
+  "name":"GMHitboxSystem",
+  "resources":[
+    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"scr_array_utils","path":"scripts/scr_array_utils/scr_array_utils.yy",},},
+    {"id":{"name":"scr_frame_counter","path":"scripts/scr_frame_counter/scr_frame_counter.yy",},},
+    {"id":{"name":"scr_hit_tracker","path":"scripts/scr_hit_tracker/scr_hit_tracker.yy",},},
+    {"id":{"name":"scr_hitbox_debug","path":"scripts/scr_hitbox_debug/scr_hitbox_debug.yy",},},
+    {"id":{"name":"scr_hitbox_shapes","path":"scripts/scr_hitbox_shapes/scr_hitbox_shapes.yy",},},
+    {"id":{"name":"scr_hitbox","path":"scripts/scr_hitbox/scr_hitbox.yy",},},
+  ],
+  "resourceType":"GMProject",
+  "resourceVersion":"2.0",
+  "RoomOrderNodes":[
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+  ],
+  "templateType":"game",
+  "TextureGroups":[
+    {"$GMTextureGroup":"","%Name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+  ],
+}
