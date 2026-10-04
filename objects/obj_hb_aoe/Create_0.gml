@@ -1,5 +1,5 @@
 // Create a hitbox that hits continuously
-hbox = new Hitbox(new HitboxCircle(0, 0, 128), obj_hb_enemy, pointer_null)
+hbox = new Hitbox(new HitboxCircle(0, 0, 128), obj_hb_enemy, new HitTracker(true))
 on_hit = function(_hit_obj) {
     do_damage(_hit_obj, 1)
     _hit_obj.is_slowed = true

@@ -4,7 +4,7 @@ function HitTracker(_continuous = false) constructor {
     touched_objs = []
     prev_touched_objs = []
     frame_last_used = 0
-    continuous = _continuous
+    continuous = _is_continuous
     
     /// @desc Registers an object as having been touched this frame, and returns whether it should be considered a new hit.
     /// @param {Any} _touched_obj The object to attempt to register.
@@ -22,10 +22,11 @@ function HitTracker(_continuous = false) constructor {
         var frame_since_last_used = global.hb_frame - frame_last_used
         frame_last_used = global.hb_frame
         
-        if frame_since_last_used > 1
+        if continuous || frame_since_last_used > 1
             array_clear(prev_touched_objs)
         else
             array_copy_simple(prev_touched_objs, touched_objs)
         array_clear(touched_objs)
     }
 }
+
