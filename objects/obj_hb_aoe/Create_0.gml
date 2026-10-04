@@ -2,7 +2,7 @@
 hbox = new Hitbox(new HitboxCircle(0, 0, 128), obj_hb_enemy, new HitTracker(true))
 on_hit = function(_hit_obj) {
     do_damage(_hit_obj, 1)
-    _hit_obj.knock_back(0, 0)
+    _hit_obj.is_slowed = true
 }
 
 destroy_timer = time_source_create(

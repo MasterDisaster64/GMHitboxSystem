@@ -26,8 +26,10 @@ else {
     else if x == room_width image_xscale = -1
         
     if random(240) <= 1 image_xscale = -image_xscale
-    hspeed = move_speed * image_xscale
+    var speed_factor = is_slowed ? slow_factor : 1
+    hspeed = move_speed * speed_factor * image_xscale
 }
+is_slowed = false
 
 #endregion
 
