@@ -12,6 +12,7 @@ function Hitbox(_shape, _target, _tracker = new HitTracker()) constructor {
     
     /// @desc Performs a collision check defined by the `shape` and stores newly hit targets in `hit_targets`.
     static trigger = function() {
+        var no_tracker = tracker == pointer_null
         array_clear(hit_targets)
         ds_list_clear(global.hb_temp_list)
         var touched_count = shape.trigger(target, global.hb_temp_list)
@@ -35,7 +36,7 @@ function Hitbox(_shape, _target, _tracker = new HitTracker()) constructor {
                 //show_debug_message(_exception.stacktrace);
             }
             
-            if tracker.register(touched_obj)
+            if no_tracker || tracker.register(touched_obj)
                 array_push(hit_targets, touched_obj)
         }
     }
