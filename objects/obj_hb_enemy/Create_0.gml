@@ -1,5 +1,6 @@
 move_speed = 4
 gravity = 0.5
+knockback_friction = 0.25
 
 is_knocked_back = false
 
