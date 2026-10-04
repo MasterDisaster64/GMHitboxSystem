@@ -23,6 +23,7 @@
   "name":"GMHitboxSystem",
   "resources":[
     {"id":{"name":"obj_hb_aoe","path":"objects/obj_hb_aoe/obj_hb_aoe.yy",},},
+    {"id":{"name":"obj_hb_empty_object","path":"objects/obj_hb_empty_object/obj_hb_empty_object.yy",},},
     {"id":{"name":"obj_hb_enemy","path":"objects/obj_hb_enemy/obj_hb_enemy.yy",},},
     {"id":{"name":"obj_hb_floating_text","path":"objects/obj_hb_floating_text/obj_hb_floating_text.yy",},},
     {"id":{"name":"obj_hb_player","path":"objects/obj_hb_player/obj_hb_player.yy",},},
@@ -35,6 +36,7 @@
     {"id":{"name":"scr_hitbox_shapes","path":"scripts/scr_hitbox_shapes/scr_hitbox_shapes.yy",},},
     {"id":{"name":"scr_hitbox","path":"scripts/scr_hitbox/scr_hitbox.yy",},},
     {"id":{"name":"spr_hb_character","path":"sprites/spr_hb_character/spr_hb_character.yy",},},
+    {"id":{"name":"spr_hb_sword","path":"sprites/spr_hb_sword/spr_hb_sword.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

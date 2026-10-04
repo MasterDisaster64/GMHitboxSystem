@@ -12,5 +12,13 @@ on_spear_shaft_hit = function(_hit_obj) {
 on_spear_point_hit = function(_hit_obj) {
     do_damage(_hit_obj, 10, make_colour_rgb(0, 255, 0))
     _hit_obj.knock_back(6 * image_xscale, -8)
-    
 }
+
+sword_obj = instance_create_depth(0, 0, 0, obj_hb_empty_object)
+sword_obj.mask_index = spr_hb_sword
+sword_hbox = new Hitbox(new HitboxObjectShape(sword_obj), obj_hb_enemy)
+on_sword_hit = function(_hit_obj) {
+    do_damage(_hit_obj, 20)
+    _hit_obj.knock_back(4 * sign(_hit_obj.x - x), -12)
+}
+sword_spin_rate = 10

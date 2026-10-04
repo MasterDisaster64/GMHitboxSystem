@@ -43,4 +43,14 @@ else {
 if keyboard_check_pressed(ord("S"))
     instance_create_depth(x, y, 10, obj_hb_aoe)
 
+if keyboard_check(ord("D")) {
+    sword_obj.x = x; sword_obj.y = y;
+    if keyboard_check_pressed(ord("D"))
+        sword_obj.image_angle = -90
+    else
+        sword_obj.image_angle -= sword_spin_rate * image_xscale
+    sword_hbox.trigger()
+    array_foreach(sword_hbox.hit_targets, on_sword_hit)
+}
+
 #endregion
