@@ -3,10 +3,11 @@ global.hb_temp_list = ds_list_create()
 /// @param {Struct.HitboxShape} _shape Controls what the hitbox covers.
 /// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target What can be hit by the hitbox.
 /// @param {Struct.HitTracker} _tracker Keeps track of what the hitbox is touching. Defaults to a new tracker unique to this hitbox.
-function Hitbox(_shape, _target, _tracker = new HitTracker()) constructor {
+function Hitbox(_shape, _target, _key = self, _is_continuous = false) constructor {
     shape = _shape
     target = _target
-    tracker = _tracker
+    key = _key
+    is_continuous = _is_continuous
     
     hit_targets = [] // The targets that were hit
     
@@ -35,7 +36,7 @@ function Hitbox(_shape, _target, _tracker = new HitTracker()) constructor {
                 //show_debug_message(_exception.stacktrace);
             }
             
-            if tracker.register(touched_obj)
+            if hit_register(key, touched_obj, is_continuous)
                 array_push(hit_targets, touched_obj)
         }
     }

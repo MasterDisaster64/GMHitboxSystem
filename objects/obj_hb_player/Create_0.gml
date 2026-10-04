@@ -4,7 +4,7 @@ jump_speed = 10
 
 /// Spear shaft and tip share one tracker
 spear_shaft_hbox = new Hitbox(new HitboxRect(48, 0, 64, 8), obj_hb_enemy)
-spear_point_hbox = new Hitbox(new HitboxRect(80, 0, 16, 16), obj_hb_enemy, spear_shaft_hbox.tracker)
+spear_point_hbox = new Hitbox(new HitboxRect(80, 0, 16, 16), obj_hb_enemy, spear_shaft_hbox.key)
 on_spear_shaft_hit = function(_hit_obj) {
     do_damage(_hit_obj, 5)
     _hit_obj.knock_back(4 * image_xscale, 0)

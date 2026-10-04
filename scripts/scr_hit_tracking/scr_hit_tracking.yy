@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_frame_counter",
+  "%Name":"scr_hit_tracking",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_frame_counter",
+  "name":"scr_hit_tracking",
   "parent":{
     "name":"Hitbox System",
     "path":"folders/Hitbox System.yy",
