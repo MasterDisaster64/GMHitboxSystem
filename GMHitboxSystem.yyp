@@ -22,7 +22,8 @@
   },
   "name":"GMHitboxSystem",
   "resources":[
-    {"id":{"name":"obj_hb_player","path":"objects/obj_hb_player/obj_hb_player.yy",},},
+    {"id":{"name":"obj_hb_character","path":"objects/obj_hb_character/obj_hb_character.yy",},},
+    {"id":{"name":"obj_hb_enemy","path":"objects/obj_hb_enemy/obj_hb_enemy.yy",},},
     {"id":{"name":"rm_hb_demo","path":"rooms/rm_hb_demo/rm_hb_demo.yy",},},
     {"id":{"name":"scr_array_utils","path":"scripts/scr_array_utils/scr_array_utils.yy",},},
     {"id":{"name":"scr_frame_counter","path":"scripts/scr_frame_counter/scr_frame_counter.yy",},},
