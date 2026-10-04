@@ -19,6 +19,22 @@ function Hitbox(_shape, _target, _tracker = new HitTracker()) constructor {
         var i = 0
         repeat (touched_count) {
             var touched_obj = global.hb_temp_list[| i++]
+            
+            // Check if the object has any extra conditions to be hit
+            // We do this via a try/catch for maximum performance without always needing a method defined,
+            // though this can can cause errors inside the method to go unnoticed
+            try {
+            	if !touched_obj.hb_can_hit() continue
+            }
+            catch (e) {
+                // If you get bugs related to vulnerability,
+                // uncomment the code below and see if you get any other unhandled exceptions
+                //show_debug_message(_exception.message);
+                //show_debug_message(_exception.longmessage);
+                //show_debug_message(_exception.script);
+                //show_debug_message(_exception.stacktrace);
+            }
+            
             if tracker.register(touched_obj)
                 array_push(hit_targets, touched_obj)
         }

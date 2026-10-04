@@ -25,7 +25,6 @@ else {
     if x == 0 image_xscale = 1
     else if x == room_width image_xscale = -1
         
-    if random(240) <= 1 image_xscale = -image_xscale
     var speed_factor = is_slowed ? slow_factor : 1
     hspeed = move_speed * speed_factor * image_xscale
 }
@@ -35,7 +34,23 @@ is_slowed = false
 
 #region Combat
 
-contact_hbox.trigger()
-array_foreach(contact_hbox.hit_targets, on_contact)
+if is_dodging() {
+    contact_hbox.trigger()
+    array_foreach(contact_hbox.hit_targets, on_contact)
+}
+
+#endregion
+
+#region Random actions
+
+
+if random(240) <= 1 image_xscale = -image_xscale
+    
+if random(240) <= 1 {
+    iframes = dodge_iframe_count
+}
+else if iframes > 0 {
+    iframes--
+}
 
 #endregion
