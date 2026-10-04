@@ -1,8 +1,8 @@
 global.hb_temp_list = ds_list_create()
 
-/// @param {Struct.HitboxShape} _shape Controls what the hitbox covers
-/// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target What can be hit by the hitbox
-/// @param {Struct.HitTracker} _tracker Struct that keeps track of what the hitbox is touching. Defaults to a new tracker unique to this hitbox.
+/// @param {Struct.HitboxShape} _shape Controls what the hitbox covers.
+/// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target What can be hit by the hitbox.
+/// @param {Struct.HitTracker} _tracker Keeps track of what the hitbox is touching. Defaults to a new tracker unique to this hitbox.
 function Hitbox(_shape, _target, _tracker = new HitTracker()) constructor {
     shape = _shape
     target = _target
@@ -10,7 +10,7 @@ function Hitbox(_shape, _target, _tracker = new HitTracker()) constructor {
     
     hit_targets = [] // The targets that were hit
     
-    /// @desc Performs a collision check defined by the `shape` and performs the `on_hit` function with newly hit targets.
+    /// @desc Performs a collision check defined by the `shape` and stores newly hit targets in `hit_targets`.
     static trigger = function() {
         array_clear(hit_targets)
         ds_list_clear(global.hb_temp_list)
