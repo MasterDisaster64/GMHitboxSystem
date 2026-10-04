@@ -1,0 +1,5 @@
+draw_set_colour(color)
+draw_set_alpha(time_source_get_time_remaining(destroy_timer))
+draw_set_halign(fa_center)
+draw_set_valign(fa_middle)
+draw_text(x, y, text)
