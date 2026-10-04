@@ -22,6 +22,7 @@
   },
   "name":"GMHitboxSystem",
   "resources":[
+    {"id":{"name":"obj_hb_aoe","path":"objects/obj_hb_aoe/obj_hb_aoe.yy",},},
     {"id":{"name":"obj_hb_enemy","path":"objects/obj_hb_enemy/obj_hb_enemy.yy",},},
     {"id":{"name":"obj_hb_floating_text","path":"objects/obj_hb_floating_text/obj_hb_floating_text.yy",},},
     {"id":{"name":"obj_hb_player","path":"objects/obj_hb_player/obj_hb_player.yy",},},

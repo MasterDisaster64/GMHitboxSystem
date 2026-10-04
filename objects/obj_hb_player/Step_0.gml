@@ -37,3 +37,10 @@ else {
 }
 
 #endregion
+
+#region More combat
+
+if keyboard_check_pressed(ord("S"))
+    instance_create_depth(x, y, 10, obj_hb_aoe)
+
+#endregion
