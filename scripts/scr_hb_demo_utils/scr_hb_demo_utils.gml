@@ -1,6 +1,8 @@
 global.player_hbox_target = obj_hb_enemy
 global.enemy_hbox_target = obj_hb_player
 
+global.player_aoe_tracker = new ContinuousHitTracker()
+
 /// @param {Id.Instance} _instance description
 /// @param {Real} _amount description
 /// @param {Constant.Color} name description
