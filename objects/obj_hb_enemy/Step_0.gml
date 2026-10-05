@@ -34,7 +34,7 @@ is_slowed = false
 
 #region Combat
 
-if is_dodging() {
+if !is_dodging() {
     contact_hbox.trigger()
     array_foreach(contact_hbox.hit_targets, on_contact)
 }

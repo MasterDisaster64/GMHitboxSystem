@@ -21,6 +21,8 @@ knock_back = function(_hspeed, _vspeed) {
 iframes = 0
 dodge_iframe_count = 40
 is_dodging = function() {
+    return iframes > 0
+}
+hb_can_hit = function() {
     return iframes <= 0
 }
-hb_can_hit = is_dodging
