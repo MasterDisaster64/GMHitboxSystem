@@ -3,7 +3,7 @@ global.hb_temp_list = ds_list_create()
 /// @param {Struct.HitboxShape} _shape Controls what the hitbox covers.
 /// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target What can be hit by the hitbox.
 /// @param {Struct.HitTracker} _tracker Keeps track of what the hitbox is touching. Defaults to a new tracker unique to this hitbox. A set of hitboxes sharing a tracker won't hit an object at the same time.
-function Hitbox(_shape, _target, _tracker = new RepeatHitTracker()) constructor {
+function Hitbox(_shape, _target, _tracker = new SingleHitTracker()) constructor {
     shape = _shape
     target = _target
     tracker = _tracker

@@ -5,6 +5,7 @@ if keyboard_check(ord("A")) {
     spear_point_hbox.draw() 
 }
 
-if keyboard_check(ord("D")) {
+if sword_frames_left > 0  {
+    
     sword_hbox.draw()
 }
