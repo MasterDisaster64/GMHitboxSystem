@@ -11,6 +11,27 @@ function HitTracker() constructor {
     static prepare = function() {}
 }
 
+/// @desc A tracker that will register a target only once per activation period (i.e. consecutive frames being used).
+function SingleHitTracker() : HitTracker() constructor {
+    frame_last_used = 0
+    
+    static register = function(_touched_obj) {
+        if array_contains(touched_objs, _touched_obj) return false
+        array_push(touched_objs, _touched_obj)
+        return true
+    }
+    
+    static prepare = function() {
+        if frame_last_used == global.hb_frame return
+        var frame_since_last_used = global.hb_frame - frame_last_used
+        frame_last_used = global.hb_frame
+        
+        if frame_since_last_used > 1
+            array_clear(touched_objs)
+    }
+}
+
+/// @desc A tracker that will register a target multiple times per activation period (i.e. consecutive frames being used) *if they leave and re-enter the hitbox*.
 function RepeatHitTracker() : HitTracker() constructor {
     prev_touched_objs = []
     frame_last_used = 0

@@ -16,7 +16,7 @@ on_spear_point_hit = function(_hit_obj) {
 
 sword_obj = instance_create_depth(0, 0, 0, obj_hb_empty_object)
 sword_obj.mask_index = spr_hb_sword
-sword_hbox = new Hitbox(new HitboxObjectShape(sword_obj), obj_hb_enemy)
+sword_hbox = new Hitbox(new HitboxObjectShape(sword_obj), obj_hb_enemy, new SingleHitTracker())
 on_sword_hit = function(_hit_obj) {
     do_damage(_hit_obj, 20)
     _hit_obj.knock_back(4 * sign(_hit_obj.x - x), -12)
