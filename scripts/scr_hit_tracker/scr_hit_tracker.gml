@@ -1,4 +1,4 @@
-/// @desc Struct used by hitboxes to keep track of what they're touching. A set of hitboxes sharing a tracker won't hit an object at the same time - good for e.g. attacks with sweet spots.
+/// @desc The base class for structs to keep track of what hitboxes are touching. Not intended to be used on its own.
 function HitTracker() constructor {
     touched_objs = []
     
@@ -22,7 +22,7 @@ function RepeatHitTracker() : HitTracker() constructor {
     }
     
     static prepare = function() {
-        if frame_last_used == global.hb_frame return // Already used this frame
+        if frame_last_used == global.hb_frame return
         var frame_since_last_used = global.hb_frame - frame_last_used
         frame_last_used = global.hb_frame
         
@@ -34,6 +34,7 @@ function RepeatHitTracker() : HitTracker() constructor {
     }
 }
 
+/// @desc A tracker that will register a target once every frame they touch the hitbox.
 function ContinuousHitTracker() : HitTracker() constructor {
     frame_last_used = 0
     
@@ -44,7 +45,7 @@ function ContinuousHitTracker() : HitTracker() constructor {
     }
     
     static prepare = function() {
-        if frame_last_used == global.hb_frame return // Already used this frame
+        if frame_last_used == global.hb_frame return
         frame_last_used = global.hb_frame
         
         array_clear(touched_objs)
