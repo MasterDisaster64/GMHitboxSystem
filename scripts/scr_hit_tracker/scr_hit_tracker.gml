@@ -66,10 +66,10 @@ function ContinuousHitTracker() : HitTracker() constructor {
     }
     
     static prepare = function() {
-        if frame_last_used == global.hb_frame return
-        frame_last_used = global.hb_frame
-        
-        array_clear(touched_objs)
+        if frame_last_used != global.hb_frame {
+           frame_last_used = global.hb_frame
+           array_clear(touched_objs)
+        }
     }
     
 }
