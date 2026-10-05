@@ -22,12 +22,13 @@ function SingleHitTracker() : HitTracker() constructor {
     }
     
     static prepare = function() {
-        if frame_last_used == global.hb_frame return
-        var frame_since_last_used = global.hb_frame - frame_last_used
-        frame_last_used = global.hb_frame
-        
-        if frame_since_last_used > 1
-            array_clear(touched_objs)
+        if frame_last_used != global.hb_frame {
+            var frame_since_last_used = global.hb_frame - frame_last_used
+            frame_last_used = global.hb_frame
+            
+            if frame_since_last_used > 1
+                array_clear(touched_objs)
+        }
     }
 }
 
@@ -43,15 +44,16 @@ function RepeatHitTracker() : HitTracker() constructor {
     }
     
     static prepare = function() {
-        if frame_last_used == global.hb_frame return
-        var frame_since_last_used = global.hb_frame - frame_last_used
-        frame_last_used = global.hb_frame
-        
-        if frame_since_last_used > 1
-            array_clear(prev_touched_objs)
-        else
-            array_copy_simple(prev_touched_objs, touched_objs)
-        array_clear(touched_objs)
+        if frame_last_used != global.hb_frame {
+            var frame_since_last_used = global.hb_frame - frame_last_used
+            frame_last_used = global.hb_frame
+            
+            if frame_since_last_used > 1
+                array_clear(prev_touched_objs)
+            else
+                array_copy_simple(prev_touched_objs, touched_objs)
+            array_clear(touched_objs)
+        }
     }
 }
 
