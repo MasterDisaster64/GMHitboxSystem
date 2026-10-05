@@ -6,7 +6,11 @@ slow_factor = 0.25
 is_knocked_back = false
 is_slowed = false
 
-contact_hbox = new Hitbox(new HitboxObjectShape(), obj_hb_player, new RepeatHitTracker())
+contact_hbox = new Hitbox(
+    global.enemy_hbox_target,
+    new HitboxObjectShape(),
+    new RepeatHitTracker()
+)
 on_contact = function(_hit_obj) {
     do_damage(_hit_obj, 10, c_red)
 }

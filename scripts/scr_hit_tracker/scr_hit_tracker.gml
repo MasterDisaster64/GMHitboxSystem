@@ -4,7 +4,7 @@ function HitTracker() constructor {
     
     /// @desc Registers an object as having been touched this frame, and returns whether it should be considered a new hit.
     /// @param {Any} _touched_obj The object to attempt to register.
-    /// @return {Bool} Whether the object was considered "hit".
+    /// @return {Bool} Whether the object was considered hit.
     static register = function(_touched_obj) {}
     
     /// @desc Prepares the tracket to be used this frame. Call this before attempting to register anything.

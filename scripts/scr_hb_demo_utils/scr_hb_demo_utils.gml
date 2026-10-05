@@ -1,3 +1,6 @@
+global.player_hbox_target = obj_hb_enemy
+global.enemy_hbox_target = obj_hb_player
+
 /// @param {Id.Instance} _instance description
 /// @param {Real} _amount description
 /// @param {Constant.Color} name description
