@@ -28,7 +28,7 @@ function Hitbox(_shape, _target = noone, _tracker = new SingleHitTracker()) cons
             // We do this via a try/catch for maximum performance without always needing a method defined,
             // though this can can cause errors inside the method to go unnoticed
             try {
-            	if !touched_obj.hb_can_hit() continue
+            	if !touched_obj.hb_can_hit(other) continue
             }
             catch (e) {
                 // If you get bugs related to vulnerability,
