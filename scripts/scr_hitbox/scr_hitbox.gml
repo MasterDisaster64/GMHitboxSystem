@@ -8,7 +8,7 @@ function Hitbox(_target, _shape, _tracker = new SingleHitTracker()) constructor 
     shape = _shape
     tracker = _tracker
     
-    hit_targets = [] // The targets that were hit
+    hit_targets = []
     
     /// @desc Performs a collision check defined by the `shape` and stores newly hit targets in `hit_targets`.
     static trigger = function() {
@@ -42,9 +42,26 @@ function Hitbox(_target, _shape, _tracker = new SingleHitTracker()) constructor 
         }
     }
     
-    /// @desc Returns the number of targets that were hit last time the hitbox triggered.
+    /// @desc Executes a function for each target the hitbox hit when last triggered.
+    /// @param {Function} _function The callback function to perform for each hit target. Accepts the following arguments: (value, index).
+    static foreach = function(_function) {
+        array_foreach(hit_targets, _function)
+    }
+    
+    /// @desc Checks whether a given function returns true for any target the hitbox hit when last triggered.
+    /// @param {Function} _function The predicate function to perform for each hit target. Accepts the following arguments: (value, index) and should return a bool.
+    static any = function(_function) {
+        return array_any(hit_targets, _function)
+    }
+    
+    /// @desc Returns the number of targets the hitbox hit when last triggered.
     static hit_count = function() {
         return array_length(hit_targets)
+    }
+    
+    /// @desc Returns whether the hitbox hit anything when last triggered.
+    static hit_anything = function() {
+        return hit_count() > 0
     }
     
     /// @desc Draws the hitbox for debugging purposes.
