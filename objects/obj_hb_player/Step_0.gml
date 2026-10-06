@@ -15,10 +15,8 @@ x = clamp(x, 0, room_width)
 if keyboard_check(ord("A")) {
     // Shared tracker + order of trigger calls ensures an enemy can only be hit by the point if it's NOT hit by the shaft
     // If the order were reversed, the point would take priority over the shaft
-    spear_shaft_hbox.trigger()
-    spear_point_hbox.trigger()
-    array_foreach(spear_shaft_hbox.hit_targets, on_spear_shaft_hit)
-    array_foreach(spear_point_hbox.hit_targets, on_spear_point_hit)
+    spear_shaft_hbox.trigger().foreach(on_spear_shaft_hit)
+    spear_point_hbox.trigger().foreach(on_spear_point_hit)
     
     hspeed = 0
 }
@@ -53,8 +51,7 @@ if sword_frames_left > 0 {
     sword_obj.image_angle = 90 + sword_frames_left * 9 * sword_direction
     sword_frames_left--
     
-    sword_hbox.trigger()
-    array_foreach(sword_hbox.hit_targets, on_sword_hit)
+    sword_hbox.trigger().foreach(on_sword_hit)
 }
 
 #endregion

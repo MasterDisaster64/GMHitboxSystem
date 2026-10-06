@@ -36,7 +36,7 @@ is_slowed = false
 
 if !is_knocked_back && !is_dodging() {
     contact_hbox.trigger()
-    array_foreach(contact_hbox.hit_targets, on_contact)
+    contact_hbox.foreach(on_contact)
 }
 
 #endregion
