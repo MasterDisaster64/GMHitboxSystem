@@ -1,5 +1,3 @@
-#region Movement
-
 var is_grounded = y >= global.floor_height
 if is_grounded {
     y = global.floor_height
@@ -7,10 +5,6 @@ if is_grounded {
 }
 
 x = clamp(x, 0, room_width)
-
-#endregion
-
-#region Combat
 
 if keyboard_check(ord("A")) {
     // Shared tracker + order of trigger calls ensures an enemy can only be hit by the point if it's NOT hit by the shaft
@@ -20,11 +14,6 @@ if keyboard_check(ord("A")) {
     
     hspeed = 0
 }
-
-#endregion
-
-#region More movement
-
 else {
    var move_input = 0 - keyboard_check(vk_left) + keyboard_check(vk_right)
    hspeed = move_input * move_speed
@@ -33,10 +22,6 @@ else {
    if is_grounded and keyboard_check(vk_space)
        vspeed = -jump_speed
 }
-
-#endregion
-
-#region More combat
 
 if keyboard_check_pressed(ord("S"))
     instance_create_depth(x, y, 10, obj_hb_aoe)
@@ -53,5 +38,3 @@ if sword_frames_left > 0 {
     
     sword_hbox.trigger().foreach(on_sword_hit)
 }
-
-#endregion

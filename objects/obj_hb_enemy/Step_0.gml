@@ -1,5 +1,3 @@
-#region Movement
-
 var is_grounded = y >= global.floor_height
 if is_grounded {
     y = global.floor_height
@@ -30,19 +28,10 @@ else {
 }
 is_slowed = false
 
-#endregion
-
-#region Combat
-
 if !is_knocked_back && !is_dodging() {
     contact_hbox.trigger()
     contact_hbox.foreach(on_contact)
 }
-
-#endregion
-
-#region Random actions
-
 
 if random(240) <= 1 image_xscale = -image_xscale
     
@@ -62,5 +51,3 @@ if random(120) <= 1 && !is_knocked_back && !is_dodging() {
         
     }
 }
-
-#endregion

@@ -19,7 +19,7 @@ on_spear_shaft_hit = function(_hit_obj) {
 }
 on_spear_point_hit = function(_hit_obj) {
     do_damage(_hit_obj, 20, make_colour_rgb(0, 255, 0))
-    _hit_obj.knock_back(4 * sign(_hit_obj.x - x), -12)
+    _hit_obj.knock_back(6 * sign(_hit_obj.x - x), -10)
 }
 
 sword_obj = instance_create_depth(0, 0, 0, obj_hb_empty_object)
@@ -32,5 +32,5 @@ sword_hbox = new Hitbox(
 )
 on_sword_hit = function(_hit_obj) {
     do_damage(_hit_obj, 10)
-    _hit_obj.knock_back(6 * image_xscale, -8)
+    _hit_obj.knock_back(4 * image_xscale, -12)
 }
