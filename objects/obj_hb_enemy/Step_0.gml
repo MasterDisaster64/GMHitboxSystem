@@ -53,10 +53,14 @@ else if iframes > 0 {
     iframes--
 }
 
-if !is_knocked_back && !is_dodging() && random(240) <= 1 {
-    projectile = instance_create_depth(x, y, -10, obj_hb_projectile)
-    projectile.image_xscale = image_xscale
-    projectile.hspeed = image_xscale * 5
+if random(120) <= 1 && !is_knocked_back && !is_dodging() {
+    var distance = obj_hb_player.x - x
+    if sign(distance) == image_xscale && abs(distance) > room_width / 3 {
+        projectile = instance_create_depth(x, y, -10, obj_hb_projectile)
+        projectile.image_xscale = image_xscale
+        projectile.hspeed = image_xscale * 6
+        
+    }
 }
 
 #endregion
