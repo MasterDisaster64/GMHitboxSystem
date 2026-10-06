@@ -7,8 +7,8 @@ is_knocked_back = false
 is_slowed = false
 
 contact_hbox = new Hitbox(
-    global.enemy_hbox_target,
     new HitboxObjectShape(),
+    global.enemy_hbox_target,
     new RepeatHitTracker()
 )
 on_contact = function(_hit_obj) {

@@ -1,8 +1,8 @@
 // Create a hitbox that hits continuously
 // Since all AoEs share a tracker, their effect doesn't stack
 hbox = new Hitbox(
-    global.player_hbox_target,
     new HitboxCircle(0, 0, 128),
+    global.player_hbox_target,
     global.player_aoe_tracker
 )
 on_hit = function(_hit_obj) {

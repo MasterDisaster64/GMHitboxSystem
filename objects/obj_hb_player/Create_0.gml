@@ -4,13 +4,13 @@ jump_speed = 10
 
 /// Spear shaft and tip share one tracker
 spear_shaft_hbox = new Hitbox(
-    global.player_hbox_target,
     new HitboxRect(48, 0, 64, 8),
+    global.player_hbox_target,
     new RepeatHitTracker()
 )
 spear_point_hbox = new Hitbox(
-    global.player_hbox_target,
     new HitboxRect(88, 0, 16, 16),
+    global.player_hbox_target,
     spear_shaft_hbox.tracker
 )
 on_spear_shaft_hit = function(_hit_obj) {
@@ -27,8 +27,8 @@ sword_obj.mask_index = spr_hb_sword
 sword_frames_left = 0
 sword_direction = 0
 sword_hbox = new Hitbox(
-    global.player_hbox_target,
-    new HitboxObjectShape(sword_obj)
+    new HitboxObjectShape(sword_obj),
+    global.player_hbox_target
 )
 on_sword_hit = function(_hit_obj) {
     do_damage(_hit_obj, 10)

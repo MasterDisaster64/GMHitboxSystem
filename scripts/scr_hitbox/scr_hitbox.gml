@@ -1,23 +1,24 @@
 global.hb_temp_list = ds_list_create()
 
-/// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target What can be hit by the hitbox.
 /// @param {Struct.HitboxShape} _shape Defines the area the hitbox covers.
+/// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target What can be hit by the hitbox.
 /// @param {Struct.HitTracker} _tracker Controls when targets touched by the shape are considered hit. A set of hitboxes sharing a tracker won't hit an object at the same time. Defaults to a new tracker unique to this hitbox.
-function Hitbox(_target, _shape, _tracker = new SingleHitTracker()) constructor {
-    target = _target
+function Hitbox(_shape, _target = noone, _tracker = new SingleHitTracker()) constructor {
     shape = _shape
+    target = _target
     tracker = _tracker
     
     hit_targets = []
     
     /// @desc Performs a collision check defined by the `shape` and stores newly hit targets in `hit_targets`.
+    /// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target Lets you override the hitbox's default target.
     /// @return {Struct.Hitbox} The hitbox itself, for method chaining.
-    static trigger = function() {
+    static trigger = function(_target = target) {
         var no_tracker = tracker == pointer_null
         if !no_tracker tracker.prepare()
         array_clear(hit_targets)
         ds_list_clear(global.hb_temp_list)
-        var touched_count = shape.trigger(target, global.hb_temp_list)
+        var touched_count = shape.trigger(_target, global.hb_temp_list)
         
         var i = 0
         repeat (touched_count) {
