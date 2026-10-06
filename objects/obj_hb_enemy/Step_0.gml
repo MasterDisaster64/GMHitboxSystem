@@ -34,7 +34,7 @@ is_slowed = false
 
 #region Combat
 
-if !is_dodging() {
+if !is_knocked_back && !is_dodging() {
     contact_hbox.trigger()
     array_foreach(contact_hbox.hit_targets, on_contact)
 }
@@ -51,6 +51,12 @@ if random(240) <= 1 {
 }
 else if iframes > 0 {
     iframes--
+}
+
+if !is_knocked_back && !is_dodging() && random(240) <= 1 {
+    projectile = instance_create_depth(x, y, -10, obj_hb_projectile)
+    projectile.image_xscale = image_xscale
+    projectile.hspeed = image_xscale * 5
 }
 
 #endregion

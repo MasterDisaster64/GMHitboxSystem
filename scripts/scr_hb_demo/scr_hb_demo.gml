@@ -11,3 +11,8 @@ function do_damage(_instance, _amount, _text_color = c_white) {
     text_obj.text = _amount
     text_obj.color = _text_color
 }
+
+function on_enemy_projectile_hit(_hit_obj) {
+    do_damage(_hit_obj, 20, c_red)
+    instance_destroy(self)
+}
