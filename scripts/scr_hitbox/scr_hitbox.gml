@@ -2,7 +2,7 @@ global.hb_temp_list = ds_list_create()
 
 /// @param {Id.TileMapElement|Asset.GMObject|Id.Instance|Constant.All|Constant.Other|Array} _target What can be hit by the hitbox.
 /// @param {Struct.HitboxShape} _shape Defines the area the hitbox covers.
-/// @param {Struct.HitTracker} _tracker Controls when targets touched by the shape are considered hit. Defaults to a new tracker unique to this hitbox. A set of hitboxes sharing a tracker won't hit an object at the same time.
+/// @param {Struct.HitTracker} _tracker Controls when targets touched by the shape are considered hit. A set of hitboxes sharing a tracker won't hit an object at the same time. Defaults to a new tracker unique to this hitbox.
 function Hitbox(_target, _shape, _tracker = new SingleHitTracker()) constructor {
     target = _target
     shape = _shape
@@ -11,6 +11,7 @@ function Hitbox(_target, _shape, _tracker = new SingleHitTracker()) constructor 
     hit_targets = []
     
     /// @desc Performs a collision check defined by the `shape` and stores newly hit targets in `hit_targets`.
+    /// @return {Struct.Hitbox} The hitbox itself, for method chaining.
     static trigger = function() {
         var no_tracker = tracker == pointer_null
         if !no_tracker tracker.prepare()
@@ -40,18 +41,22 @@ function Hitbox(_target, _shape, _tracker = new SingleHitTracker()) constructor 
             if no_tracker || tracker.register(touched_obj)
                 array_push(hit_targets, touched_obj)
         }
+        
+        return self
     }
     
     /// @desc Executes a function for each target the hitbox hit when last triggered.
+    /// Executes in the existing scope, not the hitbox's.
     /// @param {Function} _function The callback function to perform for each hit target. Accepts the following arguments: (value, index).
     static foreach = function(_function) {
-        array_foreach(hit_targets, _function)
+        with other array_foreach(other.hit_targets, _function)
     }
     
     /// @desc Checks whether a given function returns true for any target the hitbox hit when last triggered.
-    /// @param {Function} _function The predicate function to perform for each hit target. Accepts the following arguments: (value, index) and should return a bool.
+    /// Executes in the existing scope, not the hitbox's.
+    /// @param {Function} _function The predicate function to perform for each hit target. Accepts the following arguments: (value, index) and should return a bool).
     static any = function(_function) {
-        return array_any(hit_targets, _function)
+        with other return array_any(other.hit_targets, _function)
     }
     
     /// @desc Returns the number of targets the hitbox hit when last triggered.
