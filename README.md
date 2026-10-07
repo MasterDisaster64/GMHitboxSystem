@@ -1,4 +1,5 @@
 # GMHitboxSystem
+<img width="640" height="360" alt="demo" src="https://github.com/user-attachments/assets/925602be-ce16-4050-a84e-ed4d01728bb7" />
 
 A small hitbox system for GameMaker Studio 2. This isn't a complete combat system, but it can help you make hits register where and when you want them to, and _not_ where and when you _don't_.
 
@@ -7,6 +8,10 @@ A hitbox is defined by three components:
 - **Shape**: _Where_ it hits.
 - **Target**: _What_ it hits.
 - **Tracker**: _When_ it hits. Or more precisely, when it can hit something _again_.
+
+## Installation
+
+Go to Releases on the right, download the package from the latest release and import it into your GameMaker project.
 
 ## Basic Use
 
@@ -61,12 +66,12 @@ attack_hitbox.trigger().foreach(on_attack_hit)
 
 - **`hit_count()`**: Returns the number of targets hit last trigger.
 - **`hit_anything()`**: Returns whether any targets were hit last trigger.
-- **`any(function)`**: Returns whether any of the hit targets evaluate true for the specified function.
+- **`any(function)`**: Returns whether any of the hit targets evaluate true for the function in question.
 - **`draw()`**: Draws the hitbox's shape for debugging purposes (or a training mode).
 
 ## Shapes
 
-The system comes with a few predefined shapes:
+A shape uses collision functions to find targets. The system comes with a few predefined shapes:
 
 - **`HitboxRect(x, y, width, height, [relative_to])`**:
   An axis-aligned rectangle centered at the given position. Coordinates are relative to `relative_to` by default, or absolute when `relative_to` is `noone`. Defaults to being relative to `other`.
@@ -112,3 +117,19 @@ hb_can_hit = function() {
 If the target has no `hb_can_hit` method, it's allowed by this filter. The current implementation uses `try/catch` so the method doesn't need to be defined on every target. Exceptions raised inside a defined method are caught as well, and the target continues through hit tracking, so make sure this method is reliable.
 
 Alternatively, checks like these could be done on targets after they're registered as hit. This means single and repeat trackers won't register them if they become vulnerable while still in the hitbox, which you may or may not want depending on your game design.
+
+## Limitations
+
+- As the system is based on collisions with objects, "hurtboxes" are defined by sprite collision masks and can't be controlled as easily as hitbox shapes. If this is something you need, you might have to write your own system, but hopefully this one can serve as inspiration.
+- The positioning logic of `HitboxRect` and `HitboxCircle` assumes side-scrolling gameplay, with characters facing left or right based on `image_xscale`. This should be easy to tweak for your own game if need be.
+
+## Demo
+
+The package includes a demo room showing a few of the things that can be done with the system:
+
+- A spear attack with a sweet spot at the point. (press A)
+- An area of effect that deals damage over time. (press S)
+- A sword swing with sprite-based collision. (press D)
+- Enemies can dodge, deal contact damage and fire projectiles.
+
+The "Demo" group of assets can be removed without affecting the core system.
