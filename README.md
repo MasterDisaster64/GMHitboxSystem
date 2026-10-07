@@ -11,7 +11,7 @@ A hitbox is defined by three components:
 
 ## Installation
 
-Go to Releases on the right, download the package from the latest release and import it into your GameMaker project.
+Go to Releases on the right, download the `.yymps` package file from the latest release and import it into your GameMaker project.
 
 ## Basic Use
 
